@@ -1,0 +1,51 @@
+
+###POST posts
+POST https://ticketing.dev/api/users/signup HTTP/1.1
+content-type: application/json
+
+{
+  "email": "test10@test.com",
+  "password": "password"
+}
+###POST 
+POST https://ticketing.dev/api/users/sigin HTTP/1.1
+content-type: application/json
+
+{
+  "email": "test11@test.com",
+  "password": "password"
+}
+###POST 
+GET https://ticketing.dev/api/users/currentuser HTTP/1.1
+content-type: application/json
+
+
+###POST 
+POST http://ticketing.dev/api/tickets HTTP/1.1
+content-type: application/json
+
+{
+  "title": "concert",
+  "price": 10
+}
+
+###POST posts
+POST http://ticketing.dev/api/tickets HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Second Post"
+}
+
+###POST posts
+POST http://localhost:4000/posts HTTP/1.1
+content-type: application/json
+
+{
+  "title": "First Post"
+}
+
+###GET posts
+GET http://localhost:4000/posts HTTP/1.1
+content-type: application/json
+
