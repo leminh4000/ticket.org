@@ -31,6 +31,6 @@ jobs:
       - name: Build Docker Image
         run: cd auth && docker build -t "gcr.io/$PROJECT_ID/auth" .
       - run: docker push "gcr.io/$PROJECT_ID/auth"
-      - run: kubectl rollout restart deployment auth-depl
+      - run: export USE_GKE_GCLOUD_AUTH_PLUGIN=true && kubectl rollout restart deployment auth-depl
 
 

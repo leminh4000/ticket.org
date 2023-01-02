@@ -26,4 +26,4 @@ jobs:
           project_id: ${{secrets.GKE_PROJECT}}
       - name: Get GKE Credentials
         run: gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
-      - run: kubectl apply -f infra/k8s && kubectl apply -f infra/k8s-prod
+      - run: export USE_GKE_GCLOUD_AUTH_PLUGIN=true && kubectl apply -f infra/k8s && kubectl apply -f infra/k8s-prod
