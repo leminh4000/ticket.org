@@ -27,9 +27,8 @@ jobs:
       - name: Get GKE Credentials
         run: gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
       - run: |-
-          kubectl apply -f infra/k8s 
-          kubectl apply -f infra/k8s-prod
           export USE_GKE_GCLOUD_AUTH_PLUGIN=True
           gcloud components install gke-gcloud-auth-plugin
-
+          kubectl apply -f infra/k8s 
+          kubectl apply -f infra/k8s-prod
 
