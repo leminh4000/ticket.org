@@ -32,8 +32,8 @@ jobs:
           export USE_GKE_GCLOUD_AUTH_PLUGIN=True
           gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
       - name: Build Docker Image
-        run: cd client && docker build -t "gcr.io/$PROJECT_ID/client" .
-      - run: docker push "gcr.io/$PROJECT_ID/client"
+        run: cd client && docker build -t "us.gcr.io/$PROJECT_ID/client" .
+      - run: docker push "us.gcr.io/$PROJECT_ID/client"
       - run: export USE_GKE_GCLOUD_AUTH_PLUGIN=true && kubectl rollout restart deployment client-depl
 
 
