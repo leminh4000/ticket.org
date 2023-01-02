@@ -1,11 +1,11 @@
-name: deploy-auth
+name: deploy-client
 
 on:
   push:
     branches:
       - master
     paths:
-      - 'auth/**'
+      - 'client/**'
 
 env:
   PROJECT_ID: ${{secrets.GKE_PROJECT}}
@@ -32,8 +32,8 @@ jobs:
           export USE_GKE_GCLOUD_AUTH_PLUGIN=True
           gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
       - name: Build Docker Image
-        run: cd auth && docker build -t "gcr.io/$PROJECT_ID/auth" .
-      - run: docker push "gcr.io/$PROJECT_ID/auth"
-      - run: export USE_GKE_GCLOUD_AUTH_PLUGIN=true && kubectl rollout restart deployment auth-depl
+        run: cd client && docker build -t "gcr.io/$PROJECT_ID/client" .
+      - run: docker push "gcr.io/$PROJECT_ID/client"
+      - run: export USE_GKE_GCLOUD_AUTH_PLUGIN=true && kubectl rollout restart deployment client-depl
 
 
